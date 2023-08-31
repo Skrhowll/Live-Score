@@ -1,2 +1,0 @@
-# Live-Score
-School TP
