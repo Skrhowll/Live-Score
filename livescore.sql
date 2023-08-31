@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : jeu. 31 août 2023 à 08:04
+-- Généré le : jeu. 31 août 2023 à 09:09
 -- Version du serveur : 5.7.39
 -- Version de PHP : 7.4.33
 
@@ -29,7 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `competition` (
   `id` int(11) NOT NULL,
-  `libelle` varchar(150) NOT NULL
+  `libelle` varchar(150) NOT NULL,
+  `logo` varchar(1500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -54,7 +55,8 @@ CREATE TABLE `matchs` (
 
 CREATE TABLE `team` (
   `id` int(11) NOT NULL,
-  `libelle` varchar(150) NOT NULL
+  `libelle` varchar(150) NOT NULL,
+  `logo` varchar(1500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
