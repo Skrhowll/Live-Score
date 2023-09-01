@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #4b4b50;
+}
+
+main h1 {
+    color: white;
+    padding: 50px 20px 20px 50px;
+    text-align: center;
+    text-decoration: underline;
+}
+
+main hr {
+    height: 5px;
+    border-radius: 10px;
+    max-width: 1250px;
+    margin: auto;
+}
+
+main .Gallery {
+    margin: 30px auto 30px;
+    padding: 0 20px;
+    max-width: 1300px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    grid-gap: 10px;
+    justify-content: center;
+}
+
+main .Match_Case {
+    min-height: 300px;
+    background-color: crimson;
+    color: #f1f1f1;
+    padding: 20px;
+    border-radius: 3px;
+}
+
+main .Match_Case:hover {
+    transform: translateY(-3px);
+}

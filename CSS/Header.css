@@ -1,0 +1,24 @@
+header {
+    height: 100px;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+header nav {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    background-color: #232326;
+    display: flex;
+}
+
+header a {
+    width: 100%;
+    margin: 0 5px;
+    border-radius: 15px;
+    line-height: 85px;
+    text-align: center;
+    background-color: #4b4b50;
+    color: #f1f1f1;
+}
