@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : jeu. 31 août 2023 à 09:09
+-- Généré le : ven. 01 sep. 2023 à 07:45
 -- Version du serveur : 5.7.39
 -- Version de PHP : 7.4.33
 
@@ -33,6 +33,13 @@ CREATE TABLE `competition` (
   `logo` varchar(1500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `competition`
+--
+
+INSERT INTO `competition` (`id`, `libelle`, `logo`) VALUES
+(1, 'Compétition France', 'img/competition/LogoFrance.png');
+
 -- --------------------------------------------------------
 
 --
@@ -41,11 +48,19 @@ CREATE TABLE `competition` (
 
 CREATE TABLE `matchs` (
   `id` int(11) NOT NULL,
-  `equipe1` int(11) DEFAULT NULL,
-  `equipe2` int(11) NOT NULL,
-  `score` varchar(50) NOT NULL,
+  `id_equipe1` int(11) DEFAULT NULL,
+  `id_equipe2` int(11) NOT NULL,
+  `score1` int(50) NOT NULL,
+  `score2` int(11) NOT NULL,
   `id_competition` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `matchs`
+--
+
+INSERT INTO `matchs` (`id`, `id_equipe1`, `id_equipe2`, `score1`, `score2`, `id_competition`) VALUES
+(1, 1, 2, 5, 8, 1);
 
 -- --------------------------------------------------------
 
@@ -58,6 +73,14 @@ CREATE TABLE `team` (
   `libelle` varchar(150) NOT NULL,
   `logo` varchar(1500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `team`
+--
+
+INSERT INTO `team` (`id`, `libelle`, `logo`) VALUES
+(1, 'Team1', 'img/team/LogoTeam1.png'),
+(2, 'Team2', 'img/team/LogoTeam2');
 
 -- --------------------------------------------------------
 
@@ -85,8 +108,8 @@ ALTER TABLE `competition`
 --
 ALTER TABLE `matchs`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `equipe1` (`equipe1`),
-  ADD KEY `equipe2` (`equipe2`),
+  ADD KEY `equipe1` (`id_equipe1`),
+  ADD KEY `equipe2` (`id_equipe2`),
   ADD KEY `id_competition` (`id_competition`);
 
 --
@@ -109,19 +132,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `competition`
 --
 ALTER TABLE `competition`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `matchs`
 --
 ALTER TABLE `matchs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `team`
 --
 ALTER TABLE `team`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Contraintes pour les tables déchargées
@@ -132,8 +155,8 @@ ALTER TABLE `team`
 --
 ALTER TABLE `matchs`
   ADD CONSTRAINT `fk_id_team` FOREIGN KEY (`id`) REFERENCES `team` (`id`),
-  ADD CONSTRAINT `matchs_ibfk_1` FOREIGN KEY (`equipe1`) REFERENCES `team` (`id`),
-  ADD CONSTRAINT `matchs_ibfk_2` FOREIGN KEY (`equipe2`) REFERENCES `team` (`id`),
+  ADD CONSTRAINT `matchs_ibfk_1` FOREIGN KEY (`id_equipe1`) REFERENCES `team` (`id`),
+  ADD CONSTRAINT `matchs_ibfk_2` FOREIGN KEY (`id_equipe2`) REFERENCES `team` (`id`),
   ADD CONSTRAINT `matchs_ibfk_3` FOREIGN KEY (`id_competition`) REFERENCES `competition` (`id`);
 COMMIT;
 
