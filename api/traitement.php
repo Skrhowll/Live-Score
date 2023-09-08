@@ -42,20 +42,29 @@
     // Récupérer l'adresse e-mail depuis la requête GET
 $mail = isset($_GET['email']) ? $_GET['email'] : '';
 
-// Vérifier si l'adresse e-mail est vide
+// Adresse e-mail de l'expéditeur
+$expediteur = "wilfriedmasoua@yahoo.fr";
+
+// Vérifier si l'adresse e-mail du destinataire n'est pas vide
 if (!empty($mail)) {
     // Envoyer un e-mail avec le token
+    $destinataire = $mail; // Adresse e-mail du destinataire
+
     $subject = "Votre token généré";
     $message = "Voici votre token généré : " . $token;
-    $headers = "From: VotreAdresseEmail@domaine.com";
 
-    if (mail($mail, $subject, $message, $headers)) {
-        echo 'Token généré et envoyé par e-mail à ' . $mail;
+    // En-têtes de l'e-mail
+    $headers = "From: $expediteur\r\n"; // Expéditeur
+    $headers .= "Reply-To: $expediteur\r\n"; // Répondre à l'expéditeur
+
+    if (mail($destinataire, $subject, $message, $headers)) {
+        echo 'Token généré et envoyé par e-mail à ' . $destinataire;
     } else {
-        echo 'Erreur lors de l\'envoi de l\'e-mail.';
+        echo 'Erreur lors de l'envoi de l'e-mail.';
     }
-} else {
-    echo 'L\'adresse e-mail est vide. Veuillez saisir une adresse e-mail.';
+} else 
+{
+    echo "L'adresse e-mail est vide. Veuillez saisir une adresse e-mail.";
 }
 ?>
 
